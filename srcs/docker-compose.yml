@@ -2,15 +2,18 @@ version: '3'
 
 services:
   nginx:
+    image: nginx
     container_name: nginx
     build:
       context: requirements/nginx/
       dockerfile: Dockerfile
     ports:
-      - 443:443
+      - "443:443"
     networks:
       - inception
     restart: always
+    volumes:
+      - ./requirements/nginx/tools:/etc/nginx/ssl/
 
 networks:
     inception:

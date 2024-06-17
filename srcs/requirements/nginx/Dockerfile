@@ -1,5 +1,7 @@
-FROM debian:11
-RUN apt-get update && apt-get upgrade && apt-get install -y nginx
-COPY /conf/nginx.conf /etc/nginx/nginx.conf
+FROM alpine:3.19
+RUN apk update && apk upgrade && apk add --no-cache nginx
+COPY conf/nginx.conf /etc/nginx/nginx.conf
+COPY tools/* /etc/nginx/ssl/
+
 EXPOSE 443
 CMD ["nginx", "-g", "daemon off;"]

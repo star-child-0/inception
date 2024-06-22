@@ -1,20 +1,52 @@
-version: '3'
+version: '3.9'
 
 services:
   nginx:
     image: nginx
     container_name: nginx
     build:
-      context: requirements/nginx/
+      context: requirements/nginx
       dockerfile: Dockerfile
     ports:
       - "443:443"
+    # depends_on:
+    #   - wordpress
     networks:
       - inception
     restart: always
     volumes:
-      - ./requirements/nginx/tools:/etc/nginx/ssl/
+      - ./conf:/etc/nginx/http.d/
+      - ./tools:/etc/nginx/ssl/
+
+  mariadb:
+    image: mariadb
+    container_name: mariadb
+    build:
+      context: .
+      dockerfile: requirements/mariadb/Dockerfile
+      args:
+        DB_NAME: ${DB_NAME}
+        DB_USER: ${DB_USER}
+        DB_PASS: ${DB_PASS}
+        DB_ROOT: ${DB_ROOT}
+    ports:
+      - "3306:3306"
+    networks:
+      - inception
+    volumes:
+      - mariadb:/var/lib/mysql
+    restart: always
+    env_file:
+      - .env
+
+volumes:
+  mariadb:
+    driver_opts:
+      o: bind
+      type: none
+      device: /home/anvannin/data/mariadb
 
 networks:
     inception:
-        driver: bridge
+      name: inception
+      driver: bridge

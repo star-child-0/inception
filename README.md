@@ -16,6 +16,7 @@ Here are some resources that i found useful while working on the project:
 - [Docker compose overview](https://docs.docker.com/compose/reference/)
 - [How to build a container](https://docs.docker.com/compose/compose-file/build/)
 - [Docker compose down](https://docs.docker.com/reference/cli/docker/compose/down/)
+- [Docker volumes](https://docs.docker.com/storage/volumes/)
 - [Self signed SSL certificate](https://www.virtuozzo.com/application-platform-docs/self-signed-ssl/)
 
 GLHF!

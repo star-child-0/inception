@@ -9,14 +9,15 @@ services:
       dockerfile: Dockerfile
     ports:
       - "443:443"
-    # depends_on:
-    #   - wordpress
+    depends_on:
+      - wordpress
     networks:
       - inception
     restart: always
     volumes:
-      - ./conf:/etc/nginx/http.d/
-      - ./tools:/etc/nginx/ssl/
+      - ./requirements/nginx/conf/:/etc/nginx/http.d/
+      - ./requirements/nginx/tools/:/etc/nginx/ssl/
+      - wordpress:/var/www/
 
   mariadb:
     image: mariadb
@@ -39,12 +40,40 @@ services:
     env_file:
       - .env
 
+  wordpress:
+    image: wordpress
+    container_name: wordpress
+    build:
+      context: .
+      dockerfile: requirements/wordpress/Dockerfile
+      args:
+        PHP_VERSION: ${PHP_VERSION}
+        DB_NAME: ${DB_NAME}
+        DB_USER: ${DB_USER}
+        DB_PASS: ${DB_PASS}
+        DB_ROOT: ${DB_ROOT}
+    depends_on:
+      - mariadb
+    networks:
+      - inception
+    volumes:
+      - wordpress:/var/www/
+    restart: always
+    env_file:
+      - .env
+
 volumes:
   mariadb:
     driver_opts:
       o: bind
       type: none
       device: /home/anvannin/data/mariadb
+
+  wordpress:
+    driver_opts:
+      o: bind
+      type: none
+      device: /home/anvannin/data/wordpress
 
 networks:
     inception:

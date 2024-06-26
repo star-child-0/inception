@@ -20,7 +20,7 @@ down:
 
 clean: down
 	@printf "\n ${BOLD}🧹 Cleaning configuration ${NO_COLOR}\n"
-	@docker system prune -a
+	@docker system prune --all --force
 
 fclean:
 	@printf "\n ${BOLD}🔥 Burn it to the ground ${NO_COLOR}\n"

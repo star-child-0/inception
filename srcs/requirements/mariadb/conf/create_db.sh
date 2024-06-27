@@ -13,6 +13,5 @@ if [ ! -d "/var/lib/mysql/mysql" ]; then
 fi
 
 if [ ! -d "/var/lib/mysql/$DB_NAME" ]; then
-	envsubst < setup.sql
 	/usr/bin/mysqld --user=mysql --bootstrap < setup.sql
 fi

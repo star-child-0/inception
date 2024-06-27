@@ -2,7 +2,7 @@ FROM alpine:3.19
 
 ARG DB_NAME DB_USER DB_PASS
 
-RUN apk update && apk add --no-cache envsubst mariadb mariadb-client
+RUN apk update && apk add --no-cache mariadb mariadb-client
 
 RUN mkdir /var/run/mysqld; \
     chmod 777 /var/run/mysqld; \

@@ -15,8 +15,7 @@ RUN apk update && apk upgrade && apk add --no-cache \
 	php${PHP_VERSION}-openssl \
 	php${PHP_VERSION}-xml \
 	php${PHP_VERSION}-zip \
-	wget \
-	unzip && \
+	wget envsubst unzip && \
 	sed -i "s|listen = 127.0.0.1:9000|listen = 9000|g" \
 		/etc/php81/php-fpm.d/www.conf && \
 	sed -i "s|;listen.owner = nobody|listen.owner = nobody|g" \
@@ -31,8 +30,8 @@ RUN wget https://wordpress.org/latest.zip &> /dev/null && \
 	cp -rf wordpress/* . && \
 	rm -rf wordpress latest.zip
 
-COPY ./requirements/wordpress/conf/create_wp-config.sh .
-RUN sh create_wp-config.sh && rm create_wp-config.sh && \
+COPY requirements/wordpress/conf/ .
+RUN sh wp-config.sh && \
 	chmod -R 0777 wp-content/
 
 CMD ["/usr/sbin/php-fpm81", "-F"]

@@ -31,7 +31,8 @@ RUN wget https://wordpress.org/latest.zip &> /dev/null && \
 	rm -rf wordpress latest.zip
 
 COPY requirements/wordpress/conf/ .
-RUN sh wp-config.sh && \
+RUN envsubst '${DB_NAME} ${DB_USER} ${DB_PASS}' < wp-config.php > wp-config.tmp && \
+	mv wp-config.tmp wp-config.php && \
 	chmod -R 0777 wp-content/
 
 CMD ["/usr/sbin/php-fpm81", "-F"]

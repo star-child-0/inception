@@ -1,8 +1,11 @@
 [ ] nginx
 	- [ ] DOMAIN_NAME and CERTS in .env file
 
-[ ] wordpress
-	- [ ] Error establishing database connection
+[x] wordpress
+	- [x] Error establishing database connection
+
+[ ] mariadb
+	- [ ] import dump.sql
 
 [ ] README
 	- [ ] Add resources

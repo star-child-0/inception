@@ -12,6 +12,9 @@ if [ ! -d "/var/lib/mysql/mysql" ]; then
 	fi
 fi
 
-if [ ! -d "/var/lib/mysql/$DB_NAME" ]; then
-	/usr/bin/mysqld --user=mysql --bootstrap < setup.sql
-fi
+envsubst < setup.sql > setup.tmp
+mv setup.tmp setup.sql
+/usr/bin/mysqld --user=mysql --bootstrap < setup.sql
+
+# echo '/usr/bin/mysql -u' $DB_USER '-p' $DB_PASS '< dump.sql'
+# /usr/bin/mysql < dump.sql

@@ -1,8 +1,8 @@
 FROM alpine:3.19
 
-ARG DB_NAME DB_USER DB_PASS
+ARG DB_NAME DB_USER DB_PASS DB_ROOT
 
-RUN apk update && apk add --no-cache mariadb mariadb-client
+RUN apk update && apk add --no-cache envsubst mariadb mariadb-client
 
 RUN mkdir /var/run/mysqld; \
     chmod 777 /var/run/mysqld; \
@@ -18,8 +18,7 @@ RUN mysql_install_db --user=mysql --datadir=/var/lib/mysql
 
 EXPOSE 3306
 
-COPY requirements/mariadb/conf/create_db.sh .
-COPY requirements/mariadb/conf/setup.sql .
-RUN sh create_db.sh && rm create_db.sh setup.sql
+COPY requirements/mariadb/conf/ .
+RUN sh create_db.sh && rm create_db.sh setup.sql dump.sql
 USER mysql
 CMD ["/usr/bin/mysqld"]

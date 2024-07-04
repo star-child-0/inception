@@ -28,6 +28,7 @@ Here are some resources that i found useful while working on the project:
 
 ### [Maria DB](https://mariadb.org/about/)
 - [Privileges](https://phoenixnap.com/kb/how-to-create-mariadb-user-grant-privileges)
+- [Maria DB official image](https://hub.docker.com/_/mariadb)
 
 ### [WordPress](https://wordpress.com/)
 - [Server environment](https://make.wordpress.org/hosting/handbook/server-environment/#php-extensions)

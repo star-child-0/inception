@@ -1,18 +1,17 @@
 [ ] nginx
-	- [ ] DOMAIN_NAME and CERTS in .env file
+	- [x] DOMAIN_NAME and CERTS in .env file
 
-[x] wordpress
+[x] mariadb
 	- [x] Error establishing database connection
-
-[ ] mariadb
-	- [ ] import dump.sql
+	- [?] import dump.sql
 
 [ ] README
 	- [ ] Add resources
 		- [ ] PID 1 and best practices for Dockerfiles
 		- [ ] How daemons work and whether it’s a good idea to use them or not
+		- [ ] Persistent volumes
 	- [ ] Makefile banner as title
-	- [ ] shields.io for subject and re-download subject
+	- [x] shields.io for subject and re-download subject
 	- [ ] Final grade
 
 [ ] Bonus

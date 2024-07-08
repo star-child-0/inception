@@ -7,6 +7,10 @@ services:
     build:
       context: requirements/nginx
       dockerfile: Dockerfile
+      args:
+        DOMAIN_NAME: ${DOMAIN_NAME}
+        CERT: ${CERT}
+        CERT_KEY: ${CERT_KEY}
     ports:
       - "443:443"
     depends_on:
@@ -15,9 +19,10 @@ services:
       - inception
     restart: always
     volumes:
-      - ./requirements/nginx/conf/:/etc/nginx/http.d/
       - ./requirements/nginx/tools/:/etc/nginx/ssl/
       - wordpress:/var/www/
+    env_file:
+      - .env
 
   mariadb:
     image: mariadb
@@ -77,6 +82,6 @@ volumes:
       device: /home/anvannin/data/wordpress
 
 networks:
-    inception:
-      name: inception
-      driver: bridge
+  inception:
+    name: inception
+    driver: bridge

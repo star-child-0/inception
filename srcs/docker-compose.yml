@@ -41,7 +41,7 @@ services:
       - inception
     volumes:
       - mariadb:/var/lib/mysql
-      - ./requirements/mariadb/conf/dump.sql:/docker-entrypoint-initdb.d/dump.sql
+      # - ./requirements/mariadb/conf/dump.sql:/docker-entrypoint-initdb.d/dump.sql
     restart: always
     env_file:
       - .env

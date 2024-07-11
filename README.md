@@ -5,10 +5,10 @@
 <p align="center">
 	<img alt="anvannin's 42 Inception languages" src="https://img.shields.io/github/languages/top/star-child-0/inception?color=red">
 	<img alt="anvannin's 42 Inception repo-size" src="https://img.shields.io/github/repo-size/star-child-0/inception?color=green">
-	<img alt="anvannin's 42 Inception grade" src="https://img.shields.io/badge/Firenze-%25-success?style-fleat&logo=42">
 	<a href="./en.subject.pdf">
 		<img alt="Static Badge" src="https://img.shields.io/badge/Subject-v.2-teal">
 	</a>
+	<img alt="anvannin's 42 Inception grade" src="https://img.shields.io/badge/Firenze-101%25-success?style-fleat&logo=42">
 </p>
 
 

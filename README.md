@@ -1,4 +1,7 @@
-# Inception
+<p align="center">
+	<img alt="Inception" src="./.banner.png">
+</p>
+
 
 ## 📖 Overview
 
@@ -25,6 +28,9 @@ Here are some resources that i found useful while working on the project:
 - [Volumes](https://docs.docker.com/storage/volumes/)
 - [Images and docker-compose](https://dockerlabs.collabnix.com/beginners/difference-compose-dockerfile.html)
 - [Container execution](https://docs.docker.com/reference/cli/docker/container/exec/)
+- [PID 1](https://github.com/antontkv/docker-and-pid1)
+- [Best practices](https://docs.docker.com/build/building/best-practices/)
+- [Daemons](https://docs.docker.com/config/daemon/)
 
 ### [SSL certificates](https://www.cloudflare.com/learning/ssl/what-is-an-ssl-certificate/)
 - [Self signed certificate](https://www.virtuozzo.com/application-platform-docs/self-signed-ssl/)
